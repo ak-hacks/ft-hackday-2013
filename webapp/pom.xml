@@ -58,11 +58,20 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Cassandra driver is using jackson, so version conflicts occur. trying disabling.
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.mapper.version}</version>
         </dependency>
+        -->
+
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
