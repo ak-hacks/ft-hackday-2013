@@ -1,0 +1,40 @@
+{
+    "recommendationForUser":{
+        "byPosition":[
+            {
+                "articleTitle":"Test article 1",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            },
+            {
+                "articleTitle":"Test article 2",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            }
+        ],
+        "bySector":[
+            {
+                "articleTitle":"Test article 1",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            },
+            {
+                "articleTitle":"Test article 2",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            }
+        ],
+        "byCompany":[
+            {
+                "articleTitle":"Test article 1",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            },
+            {
+                "articleTitle":"Test article 2",
+                "articleUrl":"http://www.ft.com/bla1",
+                "publishedDate":"2013:05:20 12:00"
+            }
+        ]
+    }
+}
