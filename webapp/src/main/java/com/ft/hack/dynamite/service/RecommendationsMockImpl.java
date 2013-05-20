@@ -1,5 +1,6 @@
 package com.ft.hack.dynamite.service;
 
+import com.ft.hack.dynamite.model.Query;
 import com.ft.hack.dynamite.model.Recommendation;
 
 import java.util.ArrayList;
@@ -121,6 +122,12 @@ public class RecommendationsMockImpl implements RecommendationsService {
         results.put("byPosition",byPosition);
         results.put("positionName",positionName);
 
+        return results;
+    }
+
+    public Map<String, Object> getRecommendationsForQuery(Query query) {
+        Map<String, Object> results = getRecommendationsForUser(null);
+        results.put("query", query);
         return results;
     }
 }
