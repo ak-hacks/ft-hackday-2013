@@ -15,8 +15,14 @@ import java.util.Map;
 public class RecommendationsMockImpl implements RecommendationsService {
 
     @Override
-    public Map<String, List<Recommendation>> getRecommendationsForUser(String userId) {
+    public Map<String, Object> getRecommendationsForUser(String userId) {
+
+        String companyName = "Financial Times";
+        String sectorName = "Media";
+        String positionName = "Editor";
+
         List<Recommendation> byCompany = new ArrayList<Recommendation>();
+
         Recommendation recommendation1 = new Recommendation();
         recommendation1.setArticleTitle("Test article 1");
         recommendation1.setArticleUrl("http://www.ft.com/bla1");
@@ -38,9 +44,78 @@ public class RecommendationsMockImpl implements RecommendationsService {
         byPosition.add(recommendation1);
         byPosition.add(recommendation2);
 
-        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
+        Map<String, Object> results = new HashMap<String, Object>();
+        results.put("companyName",companyName);
         results.put("byCompany",byCompany);
+        results.put("sectorName",sectorName);
         results.put("bySector",bySector);
+        results.put("positionName",positionName);
+        results.put("byPosition",byPosition);
+
+        return results;
+    }
+
+    @Override
+    public Map<String, List<Recommendation>> getRecommendationsForCompany(String companyName) {
+        List<Recommendation> byCompany = new ArrayList<Recommendation>();
+        Recommendation recommendation1 = new Recommendation();
+        recommendation1.setArticleTitle("Test article 1");
+        recommendation1.setArticleUrl("http://www.ft.com/bla1");
+        recommendation1.setPublishedDate("2013:05:20 12:00");
+
+        Recommendation recommendation2 = new Recommendation();
+        recommendation2.setArticleTitle("Test article 2");
+        recommendation2.setArticleUrl("http://www.ft.com/bla1");
+        recommendation2.setPublishedDate("2013:05:20 12:00");
+
+        byCompany.add(recommendation1);
+        byCompany.add(recommendation2);
+
+        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
+        results.put(companyName,byCompany);
+
+        return results;
+    }
+
+    @Override
+    public Map<String, List<Recommendation>> getRecommendationsForSector(String sectorName) {
+        List<Recommendation> bySector = new ArrayList<Recommendation>();
+        Recommendation recommendation1 = new Recommendation();
+        recommendation1.setArticleTitle("Test article 1");
+        recommendation1.setArticleUrl("http://www.ft.com/bla1");
+        recommendation1.setPublishedDate("2013:05:20 12:00");
+
+        Recommendation recommendation2 = new Recommendation();
+        recommendation2.setArticleTitle("Test article 2");
+        recommendation2.setArticleUrl("http://www.ft.com/bla1");
+        recommendation2.setPublishedDate("2013:05:20 12:00");
+
+        bySector.add(recommendation1);
+        bySector.add(recommendation2);
+
+        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
+        results.put("bySector",bySector);
+
+        return results;
+    }
+
+    @Override
+    public Map<String, List<Recommendation>> getRecommendationsForPosition(String positionName) {
+        List<Recommendation> byPosition = new ArrayList<Recommendation>();
+        Recommendation recommendation1 = new Recommendation();
+        recommendation1.setArticleTitle("Test article 1");
+        recommendation1.setArticleUrl("http://www.ft.com/bla1");
+        recommendation1.setPublishedDate("2013:05:20 12:00");
+
+        Recommendation recommendation2 = new Recommendation();
+        recommendation2.setArticleTitle("Test article 2");
+        recommendation2.setArticleUrl("http://www.ft.com/bla1");
+        recommendation2.setPublishedDate("2013:05:20 12:00");
+
+        byPosition.add(recommendation1);
+        byPosition.add(recommendation2);
+
+        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
         results.put("byPosition",byPosition);
 
         return results;

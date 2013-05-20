@@ -19,7 +19,7 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/recmnd")
+@RequestMapping("/recommend")
 public class RecommendationsController {
 
     @Autowired
@@ -30,7 +30,14 @@ public class RecommendationsController {
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     public ModelAndView getRecommendationsForUser(@PathVariable("userId") String userId) {
 
-        Map<String, List<Recommendation>> results = recommendationsService.getRecommendationsForUser(userId);
+        Map<String, Object> results = recommendationsService.getRecommendationsForUser(userId);
+        return new ModelAndView(jsonView, "recommendationForUser", results);
+    }
+
+    @RequestMapping(value = "/company/{companyName}", method = RequestMethod.GET)
+    public ModelAndView getRecommendationsForCompany(@PathVariable("companyName") String companyName) {
+
+        Map<String, List<Recommendation>> results = recommendationsService.getRecommendationsForCompany(companyName);
         return new ModelAndView(jsonView, "recommendationForUser", results);
     }
 

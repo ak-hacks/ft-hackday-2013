@@ -24,6 +24,9 @@
                 "publishedDate":"2013:05:20 12:00"
             }
         ],
+        "sectorName":"Media",
+        "companyName":"Financial Times",
+        "positionName":"Editor",
         "byCompany":[
             {
                 "articleTitle":"Test article 1",

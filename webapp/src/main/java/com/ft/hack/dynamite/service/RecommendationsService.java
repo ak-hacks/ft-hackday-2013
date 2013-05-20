@@ -12,5 +12,8 @@ import java.util.Map;
 
 public interface RecommendationsService {
 
-    public Map<String, List<Recommendation>> getRecommendationsForUser(String userId);
+    public Map<String, Object> getRecommendationsForUser(String userId);
+    public Map<String, List<Recommendation>> getRecommendationsForCompany(String companyName);
+    public Map<String, List<Recommendation>> getRecommendationsForSector(String sectorName);
+    public Map<String, List<Recommendation>> getRecommendationsForPosition(String positionName);
 }
