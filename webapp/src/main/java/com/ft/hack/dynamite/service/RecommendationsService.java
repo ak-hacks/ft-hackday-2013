@@ -1,8 +1,5 @@
 package com.ft.hack.dynamite.service;
 
-import com.ft.hack.dynamite.model.Recommendation;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +10,7 @@ import java.util.Map;
 public interface RecommendationsService {
 
     public Map<String, Object> getRecommendationsForUser(String userId);
-    public Map<String, List<Recommendation>> getRecommendationsForCompany(String companyName);
-    public Map<String, List<Recommendation>> getRecommendationsForSector(String sectorName);
-    public Map<String, List<Recommendation>> getRecommendationsForPosition(String positionName);
+    public Map<String, Object> getRecommendationsForCompany(String companyName);
+    public Map<String, Object> getRecommendationsForSector(String sectorName);
+    public Map<String, Object> getRecommendationsForPosition(String positionName);
 }

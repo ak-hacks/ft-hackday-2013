@@ -56,7 +56,7 @@ public class RecommendationsMockImpl implements RecommendationsService {
     }
 
     @Override
-    public Map<String, List<Recommendation>> getRecommendationsForCompany(String companyName) {
+    public Map<String, Object> getRecommendationsForCompany(String companyName) {
         List<Recommendation> byCompany = new ArrayList<Recommendation>();
         Recommendation recommendation1 = new Recommendation();
         recommendation1.setArticleTitle("Test article 1");
@@ -71,14 +71,15 @@ public class RecommendationsMockImpl implements RecommendationsService {
         byCompany.add(recommendation1);
         byCompany.add(recommendation2);
 
-        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
-        results.put(companyName,byCompany);
+        Map<String, Object> results = new HashMap<String, Object>();
+        results.put("byCompany",byCompany);
+        results.put("companyName",companyName);
 
         return results;
     }
 
     @Override
-    public Map<String, List<Recommendation>> getRecommendationsForSector(String sectorName) {
+    public Map<String, Object> getRecommendationsForSector(String sectorName) {
         List<Recommendation> bySector = new ArrayList<Recommendation>();
         Recommendation recommendation1 = new Recommendation();
         recommendation1.setArticleTitle("Test article 1");
@@ -93,14 +94,15 @@ public class RecommendationsMockImpl implements RecommendationsService {
         bySector.add(recommendation1);
         bySector.add(recommendation2);
 
-        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
+        Map<String, Object> results = new HashMap<String, Object>();
         results.put("bySector",bySector);
+        results.put("sectorName",sectorName);
 
         return results;
     }
 
     @Override
-    public Map<String, List<Recommendation>> getRecommendationsForPosition(String positionName) {
+    public Map<String, Object> getRecommendationsForPosition(String positionName) {
         List<Recommendation> byPosition = new ArrayList<Recommendation>();
         Recommendation recommendation1 = new Recommendation();
         recommendation1.setArticleTitle("Test article 1");
@@ -115,8 +117,9 @@ public class RecommendationsMockImpl implements RecommendationsService {
         byPosition.add(recommendation1);
         byPosition.add(recommendation2);
 
-        Map<String, List<Recommendation>> results = new HashMap<String, List<Recommendation>>();
+        Map<String, Object> results = new HashMap<String, Object>();
         results.put("byPosition",byPosition);
+        results.put("positionName",positionName);
 
         return results;
     }

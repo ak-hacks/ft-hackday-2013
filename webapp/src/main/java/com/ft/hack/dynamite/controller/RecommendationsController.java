@@ -1,6 +1,5 @@
 package com.ft.hack.dynamite.controller;
 
-import com.ft.hack.dynamite.model.Recommendation;
 import com.ft.hack.dynamite.service.RecommendationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,7 +35,7 @@ public class RecommendationsController {
     @RequestMapping(value = "/company/{companyName}", method = RequestMethod.GET)
     public ModelAndView getRecommendationsForCompany(@PathVariable("companyName") String companyName) {
 
-        Map<String, List<Recommendation>> results = recommendationsService.getRecommendationsForCompany(companyName);
+        Map<String, Object> results = recommendationsService.getRecommendationsForCompany(companyName);
         return new ModelAndView(jsonView, "recommendationForUser", results);
     }
 
