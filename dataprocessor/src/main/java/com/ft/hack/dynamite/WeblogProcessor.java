@@ -1,5 +1,6 @@
 package com.ft.hack.dynamite;
 
+import com.ft.hack.dynamite.db.ArticleDAO;
 import com.ft.hack.dynamite.db.CountersDAO;
 import com.ft.hack.dynamite.db.UserDAO;
 
@@ -92,6 +93,7 @@ public class WeblogProcessor {
             // Update "position" demographic counters
 
             // Update article content table
+            ArticleDAO.addArticle(uuid);
         }
     }
 
