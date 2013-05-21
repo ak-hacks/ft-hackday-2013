@@ -41,8 +41,129 @@
     <form id="filters">
         <p style="margin: 1em 0">
             <label>
+                Timeframe
+                <select name="time" class="chzn-select">
+                    <option value="Last hour">Last hour</option>
+                    <option value="Last day">Last day</option>
+                </select>
+            </label>
+
+            <label>
+                Company
+                <select name="companyName" class="chzn-select">
+                    <option value="A.T. Kearney">A.T. Kearney</option>
+                    <option value="ACCA Members">ACCA Members</option>
+                    <option value="Australian Open Access Project.">Australian Open Access Project.</option>
+                    <option value="Bank of America">Bank of America</option>
+                    <option value="Bank of England">Bank of England</option>
+                    <option value="Brunel University">Brunel University</option>
+                    <option value="Capital Group Companies">Capital Group Companies</option>
+                    <option value="Cargill Incorporated">Cargill Incorporated</option>
+                    <option value="Cass Business School">Cass Business School</option>
+                    <option value="Central Bank of Ireland">Central Bank of Ireland</option>
+                    <option value="Cerow Bundles">Cerow Bundles</option>
+                    <option value="Citigroup">Citigroup</option>
+                    <option value="Cleary Gottlieb">Cleary Gottlieb</option>
+                    <option value="Council of the European Union">Council of the European Union</option>
+                    <option value="Deloitte">Deloitte</option>
+                    <option value="Deutsche Bank">Deutsche Bank</option>
+                    <option value="DG Presidency, European Parliament">DG Presidency, European Parliament</option>
+                    <option value="Edhec Business School - Trial">Edhec Business School - Trial</option>
+                    <option value="ESADE Business School">ESADE Business School</option>
+                    <option value="European Investment Bank (EIB)">European Investment Bank (EIB)</option>
+                    <option value="Federal Reserve System">Federal Reserve System</option>
+                    <option value="financial times">financial times</option>
+                    <option value="Fitch Ratings">Fitch Ratings</option>
+                    <option value="Foreign And Commonwealth Office">Foreign And Commonwealth Office</option>
+                    <option value="Fortis">Fortis</option>
+                    <option value="Freshfields Bruckhaus Deringer">Freshfields Bruckhaus Deringer</option>
+                    <option value="ft">Financial Times</option>
+                    <option value="FT Direct">FT Direct</option>
+                    <option value="FT Direct Bundles">FT Direct Bundles</option>
+                    <option value="FT Game">FT Game</option>
+                    <option value="FT Hong Kong">FT Hong Kong</option>
+                    <option value="ftfm hong kong">ftfm hong kong</option>
+                    <option value="George Washington University">George Washington University</option>
+                    <option value="Glasgow Caledonian University">Glasgow Caledonian University</option>
+                    <option value="GlaxoSmithKline">GlaxoSmithKline</option>
+                    <option value="Grant Thornton UK LLP">Grant Thornton UK LLP</option>
+                    <option value="Guggenheim Partners, LLC">Guggenheim Partners, LLC</option>
+                    <option value="Harvard University - Harvard Business School">Harvard University - Harvard Business School</option>
+                    <option value="HEC Paris">HEC Paris</option>
+                    <option value="HMRC">HMRC</option>
+                    <option value="House of Commons Library">House of Commons Library</option>
+                    <option value="HSBC">HSBC</option>
+                    <option value="IE Business School">IE Business School</option>
+                    <option value="IESE Business School">IESE Business School</option>
+                    <option value="Imperial College">Imperial College</option>
+                    <option value="Indian School of Business">Indian School of Business</option>
+                    <option value="INSEAD">INSEAD</option>
+                    <option value="Insight Exec1">Insight Exec1</option>
+                    <option value="Insight Exec2">Insight Exec2</option>
+                    <option value="Insight Exec3">Insight Exec3</option>
+                    <option value="Inter-American Development Bank">Inter-American Development Bank</option>
+                    <option value="International Monetary Fund/World Bank">International Monetary Fund/World Bank</option>
+                    <option value="King&rsquo;s College London">King&rsquo;s College London</option>
+                    <option value="KPMG Ireland">KPMG Ireland</option>
+                    <option value="KPMG LLP">KPMG LLP</option>
+                    <option value="linklaters">linklaters</option>
+                    <option value="London Business School">London Business School</option>
+                    <option value="London Metropolitan Business School">London Metropolitan Business School</option>
+                    <option value="LOUGHBOROUGH UNIVERSITY">LOUGHBOROUGH UNIVERSITY</option>
+                    <option value="Macquarie">Macquarie</option>
+                    <option value="Man Group plc">Man Group plc</option>
+                    <option value="Manchester Business School">Manchester Business School</option>
+                    <option value="McGill University">McGill University</option>
+                    <option value="Merrill Lynch">Merrill Lynch</option>
+                    <option value="MIP Politecnico di Milano School of Management">MIP Politecnico di Milano School of Management</option>
+                    <option value="morgan stanley">morgan stanley</option>
+                    <option value="n/a">n/a</option>
+                    <option value="Nanyang Technological University, Nanyang Business School">Nanyang Technological University, Nanyang Business School</option>
+                    <option value="National University of Singapore, NUS Business School">National University of Singapore, NUS Business School</option>
+                    <option value="Northern Trust Corporation">Northern Trust Corporation</option>
+                    <option value="Norton Rose LLP">Norton Rose LLP</option>
+                    <option value="Nottingham Trent University">Nottingham Trent University</option>
+                    <option value="O2 Offer">O2 Offer</option>
+                    <option value="OECD">OECD</option>
+                    <option value="Oliver Wyman">Oliver Wyman</option>
+                    <option value="open access test fall 05">open access test fall 05</option>
+                    <option value="Oracle">Oracle</option>
+                    <option value="PA Consulting">PA Consulting</option>
+                    <option value="Pearson">Pearson</option>
+                    <option value="Pearson Educaction University Offer">Pearson Educaction University Offer</option>
+                    <option value="PFIZER">PFIZER</option>
+                    <option value="PricewaterhouseCoopers">PricewaterhouseCoopers</option>
+                    <option value="PwC">PwC</option>
+                    <option value="QUALCOMM">QUALCOMM</option>
+                    <option value="Regent&rsquo;s College">Regent&rsquo;s College</option>
+                    <option value="Sciences Po">Sciences Po</option>
+                    <option value="Shell">Shell</option>
+                    <option value="Singapore Management University">Singapore Management University</option>
+                    <option value="Skadden, Arps, Slate, Meagher &amp; Flom">Skadden, Arps, Slate, Meagher &amp; Flom</option>
+                    <option value="Slaughter and May">Slaughter and May</option>
+                    <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                    <option value="The EBRD">The EBRD</option>
+                    <option value="Thunderbird School of Global Management">Thunderbird School of Global Management</option>
+                    <option value="UBS">UBS</option>
+                    <option value="ubs ag">ubs ag</option>
+                    <option value="Universita Luigi Bocconi">Universita Luigi Bocconi</option>
+                    <option value="University College London">University College London</option>
+                    <option value="University of Chicago">University of Chicago</option>
+                    <option value="University of East London">University of East London</option>
+                    <option value="University of Greenwich">University of Greenwich</option>
+                    <option value="University of Newcastle">University of Newcastle</option>
+                    <option value="University of Warwick, Business School">University of Warwick, Business School</option>
+                    <option value="US Department Of Commerce">US Department Of Commerce</option>
+                    <option value="US Department of the Treasury, Departmental Offices">US Department of the Treasury, Departmental Offices</option>
+                    <option value="Villanova University">Villanova University</option>
+                    <option value="White &amp; Case LLP">White &amp; Case LLP</option>
+                    <option value="Zicklin School of Business BARUCH college">Zicklin School of Business BARUCH college</option>
+                </select>
+            </label>
+
+            <label>
                 Job Title
-                <select name="" class="chzn-select">
+                <select name="positionName" class="chzn-select">
                     <option value=""></option>
                     <option value="Analyst">Analyst</option>
                     <option value="Associate">Associate</option>
@@ -51,6 +172,7 @@
                     <option value="CEO/president/Chairman">CEO/president/Chairman</option>
                     <option value="Consultant">Consultant</option>
                     <option value="Diplomat/Sen Govt Officer">Diplomat/Sen Govt Officer</option>
+                    <option value="Editor">Editor</option>
                     <option value="Exec Mgmt (EVP/SVP/MD)">Exec Mgmt (EVP/SVP/MD)</option>
                     <option value="Gov&rsquo;t/Int&rsquo;l org official">Gov&rsquo;t/Int&rsquo;l org official</option>
                     <option value="Manager/Supervisor">Manager/Supervisor</option>
@@ -70,9 +192,8 @@
 
             <label>
                 Sector
-                <select name="" class="chzn-select">
+                <select name="sectorName" class="chzn-select">
                     <option value=""></option>
-
                     <option value="Accountancy &amp; tax advisory">Accountancy &amp; tax advisory</option>
                     <option value="Aerospace &amp; defence">Aerospace &amp; defence</option>
                     <option value="Automobiles">Automobiles</option>
@@ -94,6 +215,7 @@
                     <option value="IT/computing">IT/computing</option>
                     <option value="IT/Tech/Telecoms">IT/Tech/Telecoms</option>
                     <option value="Legal services">Legal services</option>
+                    <option value="Media">Media</option>
                     <option value="N/A">N/A</option>
                     <option value="Oil/gas/mining">Oil/gas/mining</option>
                     <option value="Personal &amp; household goods">Personal &amp; household goods</option>
@@ -103,15 +225,6 @@
                     <option value="Trade/import/export">Trade/import/export</option>
                     <option value="Transport/logistics">Transport/logistics</option>
                     <option value="Travel &amp; leisure">Travel &amp; leisure</option>
-                </select>
-            </label>
-
-            <label>
-                Company
-                <select name="companyName" class="chzn-select">
-                    <option value=""></option>
-                    <option value="Apple">Apple</option>
-                    <option value="Google">Google</option>
                 </select>
             </label>
         </p>
