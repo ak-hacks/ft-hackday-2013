@@ -73,20 +73,26 @@ public class WeblogProcessor {
 
     public void processTuple(String timestamp, String uuid, String pid) {
         System.out.println("Processing :: " + timestamp);
+
         // Lookup user info based on uuid
         Map<String,String> userData = UserDAO.getUser(pid);
 
-        // Update "sector" demographic counters
+
         if(userData != null) {
+            // Update "sector" demographic counters
             String sectorName = userData.get("sectorName");
             if(sectorName != null && !sectorName.equalsIgnoreCase("N/A") && !sectorName.equals("")) {
                 CountersDAO.updateSectorCounter(sectorName, uuid, timestamp);
             }
+
+            // Update "company" demographic counters
+            String companyName = userData.get("companyName");
+
+
+            // Update "position" demographic counters
+
+            // Update article content table
         }
-
-        // Update "company" demographic counters
-
-        // Update "position" demographic counters
     }
 
     public static void main(String args[]) {

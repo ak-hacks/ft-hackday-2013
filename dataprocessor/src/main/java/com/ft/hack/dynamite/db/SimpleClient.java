@@ -2,6 +2,8 @@ package com.ft.hack.dynamite.db;
 
 import com.datastax.driver.core.*;
 
+import java.util.ResourceBundle;
+
 /**
  * User: anuragkapur
  * Date: 20/05/2013 16:54
@@ -11,10 +13,11 @@ public class SimpleClient {
 
     private static Cluster cluster;
     private static Session session;
+    private static final ResourceBundle bundle = ResourceBundle.getBundle("db");
 
     public SimpleClient() {
-        //TODO: read from property file
-        String node = "107.22.151.207";
+
+        String node = bundle.getString("host");
         cluster = Cluster.builder().addContactPoint(node).build();
         Metadata metadata = cluster.getMetadata();
         System.out.printf("Connected to cluster: %s\n",metadata.getClusterName());
