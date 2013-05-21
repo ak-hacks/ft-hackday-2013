@@ -1,6 +1,7 @@
 (function(dynamite, $, links) {
 
-    var data_url = 'rest/recommend/query/';
+    var data_url = 'rest/recommend/query/',
+        timeline;
 
     function init() {
         if (dynamite.userId()) {
@@ -8,6 +9,8 @@
             $(document).on('dynamitePopularContentReady', selectValues);
             selectListeners();
             speech();
+            timeline = new links.Timeline(document.getElementById('timeline'));
+            timeline.draw({}, {width: "100%", height: "99%", style: "box", groupsOnRight: true});
         }
     }
 
@@ -35,8 +38,9 @@
     // Called when the Visualization API is loaded.
     function drawTimeline(data) {
         // Create and populate a data table.
-        var rows = [],i, a, article, articles = [], options = {width: "100%", height: "99%", style: "box", groupsOnRight: true},
-            timeline = new links.Timeline(document.getElementById('timeline'));
+        var rows = [],i, a, article, articles = [];
+
+        timeline.clearItems();
 
         for (i = 0; i < dynamite.areas.length; i++) {
             if (data.hasOwnProperty(dynamite.areas[i].dataName)) {
@@ -60,7 +64,8 @@
             }
         }
 
-        timeline.draw(rows, options);
+        timeline.addItems(rows);
+        timeline.reflowItems();
     }
 
     function selectValues(event, data) {
