@@ -10,7 +10,7 @@ public class Recommendation implements Comparable<Recommendation> {
     private String articleTitle;
     private String articleUrl;
     private String publishedDate;
-    private int count;
+    private int count = 0;
 
     public int getCount() {
         return count;

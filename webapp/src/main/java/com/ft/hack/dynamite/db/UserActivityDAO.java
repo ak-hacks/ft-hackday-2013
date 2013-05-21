@@ -38,8 +38,6 @@ public class UserActivityDAO {
             // no info exists
         }
 
-        // sort
-        Collections.sort(byCompany);
         return byCompany;
     }
 
@@ -55,19 +53,24 @@ public class UserActivityDAO {
         Row row = session.execute(query).one();
         if(row != null) {
             // Info for this sector exists
-            query = String.format("SELECT * FROM ftdynamite.useractivity_sector_%s",sectorName);
+            query = String.format("SELECT * FROM ftdynamite.useractivity_sector_%s WHERE date>=%d AND date <=%d ALLOW FILTERING",sectorName,20130507,20130508);
+            //query = String.format("SELECT * FROM ftdynamite.useractivity_sector_%s",sectorName);
+            System.out.println("Query >> " + query);
             ResultSet results = session.execute(query);
             for (Row row1 : results) {
                 Recommendation recommendation = ArticleDAO.getArticle(row1.getString("article_id"));
                 row1.getString("article_id");
 
                 //TODO sort by count and use that to return top 5 or 10
-                row1.getLong("count");
+                if(recommendation != null) {
+                    recommendation.setCount((int)row1.getLong("count"));
+                }
                 bySector.add(recommendation);
             }
         }else {
             // no info exists
         }
+
         return bySector;
     }
 
@@ -161,6 +164,7 @@ public class UserActivityDAO {
     }
 
     public static void main(String args[]) {
-        UserActivityDAO.getUserActivityByCompany("apple", null);
+        //UserActivityDAO.getUserActivityByCompany("apple", null); Financial services
+        List<Recommendation> recommendations = UserActivityDAO.getUserActivityBySector("Financial services",null);
     }
 }
