@@ -4,7 +4,7 @@
         $(document).on('dynamitePopularContentReady', function(event, data) {
             var homepage_top5 = $(document.createElement('div'));
             homepage_top5.addClass('dynamite article package');
-            homepage_top5.append('<h1><a href="teamDynamite.html">People like you, also read</a></h1>');
+            homepage_top5.append('<h1><a href="teamDynamite.html">Your peers are reading</a></h1>');
             homepage_top5.append(renderTop5(data));
             $('.master-row.contentSection').prepend(homepage_top5);
         });
@@ -20,7 +20,7 @@
                     html.push('<h2>');
                     html.push(dynamite.areas[i].title.replace('**name**', data[dynamite.areas[i].areaName]));
                     html.push('</h2><ul>');
-                    html.push(renderArea(data[dynamite.areas[i].dataName]));
+                    html.push(renderArea(data[dynamite.areas[i].dataName].slice(0,5)));
                 }
             }
         }

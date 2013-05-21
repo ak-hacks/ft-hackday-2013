@@ -64,7 +64,7 @@ var dynamite = (function($) {
         var dynamite_tab = $(document.createElement('div')).attr('id', 'dynamite_tag');
 
         dynamite_tab.css('right', '-250px').html([
-            '<h1><a href="teamDynamite.html">People like you, also read</a></h1>',
+            '<h1><a href="teamDynamite.html">Your peers are reading</a></h1>',
             '<p><span id="article_flasher" style="display:none"></span></p>'
         ].join(''));
 
@@ -83,7 +83,7 @@ var dynamite = (function($) {
         for (i = 0; i < areas.length; i++) {
             if (data.hasOwnProperty(areas[i].dataName)) {
                 if (data[areas[i].dataName].length > 0) {
-                    articles = articles.concat(data[areas[i].dataName]);
+                    articles = articles.concat(data[areas[i].dataName].slice(0,5));
                 }
             }
         }
