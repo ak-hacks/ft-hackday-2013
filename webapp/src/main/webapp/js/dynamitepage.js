@@ -16,7 +16,7 @@
             var speech = $(this).val();
             console.log(speech);
 
-            if (speech.match(/people (at )?(\w\s+)( read(ing)?)?/i)) {
+            if (speech.match(/people (at )?([\w\s]+) read(ing)?/i)) {
                 var company = RegExp.$2;
                 console.log(company);
 
