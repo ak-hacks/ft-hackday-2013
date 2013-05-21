@@ -1,6 +1,10 @@
 package com.ft.hack.dynamite;
 
+import com.ft.hack.dynamite.db.CountersDAO;
+import com.ft.hack.dynamite.db.UserDAO;
+
 import java.io.*;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
@@ -10,7 +14,7 @@ import java.util.StringTokenizer;
 
 public class WeblogProcessor {
 
-    private String filePath = "/Users/anuragkapur/Tech_Stuff/ft/weblog_data/stats.ft.com.20130508";
+    private static final String filePath = "/Users/anuragkapur/Tech_Stuff/ft/weblog_data/stats.ft.com.20130508";
 
     public void processFile(String filePath) {
         String strLine = "";
@@ -51,8 +55,11 @@ public class WeblogProcessor {
                                 }
                             }
 
-                            if (meaningfulRecord)
-                                System.out.println(uuid + " :: " + pid);
+                            if (meaningfulRecord) {
+                                String timestamp = strLine.substring(strLine.indexOf("[")+1,strLine.indexOf("]"));
+                                processTuple(timestamp, uuid, pid);
+                            }
+
                         }
                     }
                 } catch(Exception e) {
@@ -62,5 +69,28 @@ public class WeblogProcessor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void processTuple(String timestamp, String uuid, String pid) {
+        System.out.println("Processing :: " + timestamp);
+        // Lookup user info based on uuid
+        Map<String,String> userData = UserDAO.getUser(pid);
+
+        // Update "sector" demographic counters
+        if(userData != null) {
+            String sectorName = userData.get("sectorName");
+            if(sectorName != null && !sectorName.equalsIgnoreCase("N/A") && !sectorName.equals("")) {
+                CountersDAO.updateSectorCounter(sectorName, uuid, timestamp);
+            }
+        }
+
+        // Update "company" demographic counters
+
+        // Update "position" demographic counters
+    }
+
+    public static void main(String args[]) {
+        WeblogProcessor processor = new WeblogProcessor();
+        processor.processFile(filePath);
     }
 }
