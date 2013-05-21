@@ -70,3 +70,7 @@
 .ft-timeline {
     background: #2e6e9e;
 }
+#speechinput {
+    font-size: 1.5em;
+    width: 60%;
+}

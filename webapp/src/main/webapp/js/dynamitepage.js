@@ -7,7 +7,29 @@
             $(".chzn-select").chosen();
             $(document).on('dynamitePopularContentReady', selectValues);
             selectListeners();
+            speech();
         }
+    }
+
+    function speech(){
+        $('#speechinput').on('webkitspeechchange', function(){
+            var speech = $(this).val();
+            console.log(speech);
+
+            if (speech.match(/people (at )?(\w+) (read(ing)?)?/i)) {
+                var company = RegExp.$2;
+                console.log(company);
+
+                $.ajax({
+                    url: data_url,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ companyName: company }),
+                    type: 'POST',
+                    success: function(data) { selectValues(null, data.recommendationsForUser); }
+                })
+            }
+        })
     }
 
     // Called when the Visualization API is loaded.
