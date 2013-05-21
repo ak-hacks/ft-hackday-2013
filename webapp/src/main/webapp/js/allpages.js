@@ -36,13 +36,13 @@ var dynamite = (function($) {
         $('#signin-thinker,#signin-functional,#signin-student').click(function() {
             switch ($(this).attr('id')) {
                 case 'signin-thinker':
-                    document.cookie = "FT_U=PID=4008149831;path=/";
+                    document.cookie = "FT_U=PID=4003183645;path=/";
                     break;
                 case 'signin-functional':
                     document.cookie = "FT_U=PID=4004082036;path=/";
                     break;
                 case 'signin-student':
-                    document.cookie = "FT_U=PID=4003988020;path=/";
+                    document.cookie = "FT_U=PID=4009191270;path=/";
                     break;
             }
 

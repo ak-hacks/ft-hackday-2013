@@ -16,14 +16,16 @@ public class UserActivityDAO {
 
     public static List<Recommendation> getUserActivityByCompany(String companyName, String timeFilter) {
 
+        companyName = tableNameCleanup(companyName);
         List<Recommendation> byCompany = new ArrayList<Recommendation>();
 
         String query = String.format("SELECT * FROM ftdynamite.companies WHERE company_name='%s'",companyName);
+        System.out.println("Query >> " + query);
         Session session = SimpleClient.getSession();
         Row row = session.execute(query).one();
         if(row != null) {
             // Info for this company exists
-            query = String.format("SELECT * FROM ftdynamite.useractivity_company_%s",companyName);
+            query = String.format("SELECT * FROM ftdynamite.useractivity_company_%s WHERE date>=%d AND date <=%d ALLOW FILTERING",companyName,20130507,20130508);
             System.out.println("Query >> " + query);
             ResultSet results = session.execute(query);
 
@@ -76,14 +78,16 @@ public class UserActivityDAO {
 
     public static List<Recommendation> getUserActivityByPosition(String positionName, String timeFilter) {
 
+        positionName = tableNameCleanup(positionName);
         List<Recommendation> byPosition = new ArrayList<Recommendation>();
 
         String query = String.format("SELECT * FROM ftdynamite.positions WHERE position_name='%s'",positionName);
+        System.out.println("Query >> " + query);
         Session session = SimpleClient.getSession();
         Row row = session.execute(query).one();
         if(row != null) {
             // Info for this position exists
-            query = String.format("SELECT * FROM ftdynamite.useractivity_position_%s",positionName);
+            query = String.format("SELECT * FROM ftdynamite.useractivity_position_%s WHERE date>=%d AND date <=%d ALLOW FILTERING",positionName,20130507,20130508);
             ResultSet results = session.execute(query);
             for (Row row1 : results) {
                 Recommendation recommendation = ArticleDAO.getArticle(row1.getString("article_id"));
@@ -160,7 +164,10 @@ public class UserActivityDAO {
     }
 
     private static String tableNameCleanup(String tableName) {
-        return tableName.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        if(null != tableName)
+            return tableName.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        else
+            return tableName;
     }
 
     public static void main(String args[]) {

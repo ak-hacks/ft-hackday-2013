@@ -78,8 +78,11 @@ public class RecommendationsDBImpl implements RecommendationsService{
 
         Map<String, Object> results = new HashMap<String, Object>();
         results.put("byCompany",byCompany);
-        results.put("bySector",byCompany);
+        results.put("bySector",bySector);
         results.put("byPosition",byPosition);
+        results.put("companyName",query.getCompanyName());
+        results.put("positionName",query.getPositionName());
+        results.put("sectorName",query.getSectorName());
 
         return results;
     }

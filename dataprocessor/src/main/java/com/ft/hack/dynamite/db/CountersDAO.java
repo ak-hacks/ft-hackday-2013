@@ -109,7 +109,7 @@ public class CountersDAO {
             }
         } else {
             // New position record
-            session.execute("UPDATE ftdynamite.position SET count=count+1 WHERE position_name='" + positionName + "'");
+            session.execute("UPDATE ftdynamite.positions SET count=count+1 WHERE position_name='" + positionName + "'");
             // create position_positionName table
             positionCounterTableName = "ftdynamite.useractivity_position_" + positionName;
             query = String.format("CREATE TABLE %s (article_id varchar, date bigint, count counter, PRIMARY KEY(article_id, date))", positionCounterTableName);

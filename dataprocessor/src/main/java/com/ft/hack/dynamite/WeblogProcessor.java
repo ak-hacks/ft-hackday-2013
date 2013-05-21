@@ -93,7 +93,10 @@ public class WeblogProcessor {
             }
 
             // Update "position" demographic counters
-            //TODO
+            String positionName = userData.get("positionName");
+            if(positionName != null && !positionName.equalsIgnoreCase("N/A") && !positionName.equals("")) {
+                CountersDAO.updatePositionCounter(positionName, uuid, timestamp);
+            }
 
             // Update article content table
             ArticleDAO.addArticle(uuid);
