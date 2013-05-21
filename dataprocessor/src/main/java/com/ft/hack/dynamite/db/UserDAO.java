@@ -35,4 +35,8 @@ public class UserDAO {
             return null;
         }
     }
+
+    public static void main(String args[]) {
+        UserDAO.getUser("4005626943");
+    }
 }

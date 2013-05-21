@@ -31,7 +31,7 @@
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
 
     <bean id="recommendationsController" class="com.ft.hack.dynamite.controller.RecommendationsController">
-        <property name="recommendationsService" ref="recommendationsMock"/>
+        <property name="recommendationsService" ref="recommendationsDB"/>
     </bean>
 
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

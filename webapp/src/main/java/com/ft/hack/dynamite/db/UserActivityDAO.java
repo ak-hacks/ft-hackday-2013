@@ -5,10 +5,7 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import com.ft.hack.dynamite.model.Recommendation;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: anuragkapur
@@ -19,20 +16,46 @@ public class UserActivityDAO {
 
     public static List<Recommendation> getUserActivityByCompany(String companyName, String timeFilter) {
 
-        String query = "";
-        return null;
+        List<Recommendation> byCompany = new ArrayList<Recommendation>();
+
+        String query = String.format("SELECT * FROM ftdynamite.companies WHERE company_name='%s'",companyName);
+        Session session = SimpleClient.getSession();
+        Row row = session.execute(query).one();
+        if(row != null) {
+            // Info for this company exists
+            query = String.format("SELECT * FROM ftdynamite.useractivity_company_%s",companyName);
+            System.out.println("Query >> " + query);
+            ResultSet results = session.execute(query);
+
+            for (Row row1 : results) {
+                Recommendation recommendation = ArticleDAO.getArticle(row1.getString("article_id"));
+                if(recommendation != null) {
+                    recommendation.setCount((int)row1.getLong("count"));
+                    byCompany.add(recommendation);
+                }
+            }
+        }else {
+            // no info exists
+        }
+
+        // sort
+        Collections.sort(byCompany);
+        return byCompany;
     }
 
     public static List<Recommendation> getUserActivityBySector(String sectorName, String timeFilter) {
 
+        sectorName = tableNameCleanup(sectorName);
+
         List<Recommendation> bySector = new ArrayList<Recommendation>();
 
-        String query = String.format("SELECT * FROM sectors WHERE sector_name='%s'",sectorName);
+        String query = String.format("SELECT * FROM ftdynamite.sectors WHERE sector_name='%s'",sectorName);
+        System.out.println("Query >> " + query);
         Session session = SimpleClient.getSession();
         Row row = session.execute(query).one();
         if(row != null) {
             // Info for this sector exists
-            query = String.format("SELECT * FROM useractivity_sector_%s",sectorName);
+            query = String.format("SELECT * FROM ftdynamite.useractivity_sector_%s",sectorName);
             ResultSet results = session.execute(query);
             for (Row row1 : results) {
                 Recommendation recommendation = ArticleDAO.getArticle(row1.getString("article_id"));
@@ -48,10 +71,29 @@ public class UserActivityDAO {
         return bySector;
     }
 
-    public static List<Recommendation> getUserActivityByPosition(String companyName, String timeFilter) {
+    public static List<Recommendation> getUserActivityByPosition(String positionName, String timeFilter) {
 
-        String query = "";
-        return null;
+        List<Recommendation> byPosition = new ArrayList<Recommendation>();
+
+        String query = String.format("SELECT * FROM ftdynamite.positions WHERE position_name='%s'",positionName);
+        Session session = SimpleClient.getSession();
+        Row row = session.execute(query).one();
+        if(row != null) {
+            // Info for this position exists
+            query = String.format("SELECT * FROM ftdynamite.useractivity_position_%s",positionName);
+            ResultSet results = session.execute(query);
+            for (Row row1 : results) {
+                Recommendation recommendation = ArticleDAO.getArticle(row1.getString("article_id"));
+                row1.getString("article_id");
+
+                //TODO sort by count and use that to return top 5 or 10
+                row1.getLong("count");
+                byPosition.add(recommendation);
+            }
+        }else {
+            // no info exists
+        }
+        return byPosition;
     }
 
     public static void processTimeFilter(String timeFilter) {
@@ -112,6 +154,10 @@ public class UserActivityDAO {
             fromDate=calendar.getTime();
             System.out.println(toDate.toString() + " :: " + fromDate.toString() );
         }
+    }
+
+    private static String tableNameCleanup(String tableName) {
+        return tableName.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
     }
 
     public static void main(String args[]) {

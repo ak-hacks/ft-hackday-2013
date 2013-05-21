@@ -88,9 +88,12 @@ public class WeblogProcessor {
 
             // Update "company" demographic counters
             String companyName = userData.get("companyName");
-
+            if(companyName != null && !companyName.equalsIgnoreCase("N/A") && !companyName.equals("")) {
+                CountersDAO.updateCompanyCounter(companyName, uuid, timestamp);
+            }
 
             // Update "position" demographic counters
+            //TODO
 
             // Update article content table
             ArticleDAO.addArticle(uuid);

@@ -5,11 +5,20 @@ package com.ft.hack.dynamite.model;
  * Date: 20/05/2013 10:43
  */
 
-public class Recommendation {
+public class Recommendation implements Comparable<Recommendation> {
 
     private String articleTitle;
     private String articleUrl;
     private String publishedDate;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public String getArticleTitle() {
         return articleTitle;
@@ -33,5 +42,13 @@ public class Recommendation {
 
     public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+    @Override
+    public int compareTo(Recommendation recommendation) {
+        int compareCount = ((Recommendation) recommendation).getCount();
+
+        //descending order
+        return compareCount - this.count;
     }
 }

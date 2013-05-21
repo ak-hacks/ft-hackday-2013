@@ -28,6 +28,10 @@ public class SimpleClient {
     }
 
     public static Session getSession() {
+        if(session == null) {
+            SimpleClient client = new SimpleClient();
+        }
+
         return session;
     }
 
