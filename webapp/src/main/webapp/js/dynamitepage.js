@@ -5,6 +5,7 @@
     function init() {
         if (dynamite.userId()) {
             $(".chzn-select").chosen();
+            $(document).on('dynamitePopularContentReady', selectValues);
             selectListeners();
             drawTimeline({});
         }
@@ -24,25 +25,37 @@
             }
         }
 
-        console.log(articles);
-
         for (a in articles) {
             if (articles.hasOwnProperty(a)) {
                 article = articles[a];
 
                 rows.push({
                     start: (new Date(Date.parse(article.publishedDate))),
-                    content: '<a href="'+article.articleUrl+'">'+article.articleTitle+'</a>'
+                    content: '<a href="'+article.articleUrl+'">'+article.articleTitle+'</a>',
+                    className: 'ft-timeline'
                     //group: groups[group_gen]
-                    // Optional: a field 'className'
                     // Optional: a field 'editable'
                 });
             }
         }
 
-        console.log(rows);
-
         timeline.draw(rows, options);
+    }
+
+    function selectValues(event, data) {
+        var defaults = {
+            time: 'Last hour',
+            companyName: '',
+            positionName: '',
+            sectorName: ''
+        };
+
+        $('form#filters select[name=time]').val(defaults.time).trigger("liszt:updated");
+        $('form#filters select[name=companyName]').val(data.companyName || defaults.companyName).trigger("liszt:updated");
+        $('form#filters select[name=positionName]').val(data.positionName || defaults.positionName).trigger("liszt:updated");
+        $('form#filters select[name=sectorName]').val(data.sectorName || defaults.sectorName).trigger("liszt:updated");
+
+        $('form#filters select[name=sectorName]').change();
     }
 
     function selectListeners() {

@@ -25,12 +25,7 @@ var dynamite = (function($) {
 
 
     function userId() {
-        var user = document.cookie.match(/dynamiteUser=([^;]+)/);
-        if (user) {
-            return user[1];
-        }
-
-        return false;
+        return document.cookie.match(/PID=(\d+)/) && RegExp.$1 !== "" && RegExp.$1 !== "null" ? RegExp.$1 : null;
     }
 
     function signInBox() {
@@ -41,13 +36,13 @@ var dynamite = (function($) {
         $('#signin-thinker,#signin-functional,#signin-student').click(function() {
             switch ($(this).attr('id')) {
                 case 'signin-thinker':
-                    document.cookie = "dynamiteUser=12345";
+                    document.cookie = "FT_U=PID=1000813211;domain=ft.com;path=/";
                     break;
                 case 'signin-functional':
-                    document.cookie = "dynamiteUser=456";
+                    document.cookie = "FT_U=PID=4008675917;domain=ft.com;path=/";
                     break;
                 case 'signin-student':
-                    document.cookie = "dynamiteUser=789";
+                    document.cookie = "FT_U=PID=4004125073;domain=ft.com;path=/";
                     break;
             }
 
