@@ -7,14 +7,11 @@
             $(".chzn-select").chosen();
             $(document).on('dynamitePopularContentReady', selectValues);
             selectListeners();
-            drawTimeline({});
         }
     }
 
     // Called when the Visualization API is loaded.
     function drawTimeline(data) {
-        selectValues(null, data);
-
         // Create and populate a data table.
         var rows = [],i, a, article, articles = [], options = {width: "100%", height: "99%", style: "box", groupsOnRight: true},
             timeline = new links.Timeline(document.getElementById('timeline'));
@@ -52,11 +49,11 @@
             sectorName: ''
         };
 
-        $('form#filters select[name=time]').val(defaults.time).trigger("liszt:updated");
+        //$('form#filters select[name=time]').val(defaults.time).trigger("liszt:updated");
         $('form#filters select[name=companyName]').val(data.companyName || defaults.companyName).trigger("liszt:updated");
         $('form#filters select[name=positionName]').val(data.positionName || defaults.positionName).trigger("liszt:updated");
         $('form#filters select[name=sectorName]').val(data.sectorName || defaults.sectorName).trigger("liszt:updated");
-        $('form#filters select[name=sectorName]').change();
+        //$('form#filters select[name=sectorName]').change();
 
         if(data.companyName || data.positionName || data.sectorName) {
             var title = [];
@@ -79,6 +76,8 @@
             }
 
             $('#dynamite_title').text(title.join(' ') + '.');
+
+            drawTimeline(data);
         }
 
     }
@@ -91,7 +90,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify($('#filters').serializeObject()),
                 type: 'POST',
-                success: function(data) { drawTimeline(data.recommendationsForUser); }
+                success: function(data) { selectValues(null, data.recommendationsForUser); }
             })
         });
     }
