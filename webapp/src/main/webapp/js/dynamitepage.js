@@ -24,7 +24,7 @@
                     url: data_url,
                     dataType: 'json',
                     contentType: 'application/json',
-                    data: JSON.stringify({ companyName: company }),
+                    data: JSON.stringify({ companyName: company, sectorName:'', positionName:'' }),
                     type: 'POST',
                     success: function(data) { selectValues(null, data.recommendationsForUser); }
                 })
