@@ -36,13 +36,13 @@ var dynamite = (function($) {
         $('#signin-thinker,#signin-functional,#signin-student').click(function() {
             switch ($(this).attr('id')) {
                 case 'signin-thinker':
-                    document.cookie = "FT_U=PID=1000813211;domain=ft.com;path=/";
+                    document.cookie = "FT_U=PID=1000813211;path=/";
                     break;
                 case 'signin-functional':
-                    document.cookie = "FT_U=PID=4008675917;domain=ft.com;path=/";
+                    document.cookie = "FT_U=PID=4008675917;path=/";
                     break;
                 case 'signin-student':
-                    document.cookie = "FT_U=PID=4004125073;domain=ft.com;path=/";
+                    document.cookie = "FT_U=PID=4004125073;path=/";
                     break;
             }
 
