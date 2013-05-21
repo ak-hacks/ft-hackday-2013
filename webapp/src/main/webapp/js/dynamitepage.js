@@ -10,7 +10,7 @@
             selectListeners();
             speech();
             timeline = new links.Timeline(document.getElementById('timeline'));
-            timeline.draw({}, {width: "100%", height: "99%", style: "box", groupsOnRight: true});
+            timeline.draw([], {width: "100%", height: "99%", style: "box", groupsOnRight: true});
         }
     }
 
@@ -65,7 +65,7 @@
         }
 
         timeline.addItems(rows);
-        timeline.reflowItems();
+        timeline.redraw();
     }
 
     function selectValues(event, data) {
